@@ -93,7 +93,7 @@ public class EstadoPagamento extends Estado {
         comanda.setTotal(0);
         comandaRepository.save(comanda);
         
-        comandaDAO.deletaItem();
+        comandaDAO.deletaItem(cliente);
           
     }
     
