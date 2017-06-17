@@ -276,8 +276,8 @@ app.controller("botctrl", function($scope, $http){
         }
         if(cliente.relatorio.modelo === "Itens mais pedidos"){
             console.log("FOI!!!, MAIS PEDIDOS")
-            $scope.nome = "Nome";
-            $scope.propriedade = "Nota da Avaliação";
+            $scope.nome = "Item";
+            $scope.propriedade = "Quantidade";
             $http.get("http://localhost:8080/clientes")
                 .then(function(cliente){
                     console.log('Vaaaai!');
