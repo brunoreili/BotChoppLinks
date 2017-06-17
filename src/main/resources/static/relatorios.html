@@ -45,7 +45,7 @@
                     ng-options="relatorio.modelo for relatorio in relatorios">
                 <option value="">Selecione o relatório</option>
             </select> <br/>
-            <button class="btn btn-primary" ng-click="listarClientes(cliente)"
+            <button class="btn btn-primary" ng-click="gerarRelatorios(cliente)"
                     ng-disabled="!cliente.relatorio">Gerar</button>
             <h4 ng-show="buscando">Buscando...</h4>
             

@@ -17,8 +17,8 @@ import app.bot.cardapio.ItemNaoAlcool;
 import app.bot.cardapio.ItemNaoAlcoolRepository;
 import app.bot.cliente.Cliente;
 import app.bot.cliente.ClienteRepository;
-import app.bot.comanda.Comanda;
-import app.bot.comanda.ComandaRepository;
+import app.bot.comanda.ItemComanda;
+import app.bot.comanda.ItemComandaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,6 +41,8 @@ public class ControllerBar {
     private ItemDrinkRepository itemDrinkRepository;
     private ItemNaoAlcoolRepository itemNaoAlcoolRepository;
     private ClienteRepository clienteRepository;
+    private ItemComandaRepository itemComandaRepository;
+            
     //private ComandaRepository comandaRepository;
     
     //Preencher Banco
@@ -183,6 +185,15 @@ public class ControllerBar {
         clienteRepository = context.getBean(ClienteRepository.class);
         
         return (List<Cliente>) clienteRepository.findAll();
+        
+    }
+    //MAIS PEDIDOS
+    @RequestMapping(method=RequestMethod.GET, value="/maispedidos")
+    public List<ItemComanda> listarMaisPedidos(){
+        
+        itemComandaRepository = context.getBean(ItemComandaRepository.class);
+        
+        return (List<ItemComanda>) itemComandaRepository.findAll();
         
     }
     

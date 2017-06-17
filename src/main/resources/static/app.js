@@ -216,9 +216,8 @@ app.controller("botctrl", function($scope, $http){
         {modelo: "Itens mais pedidos"}
     ];
     
-    //RELATÓRIOS
-    
-    $scope.listarClientes = function(cliente){
+    //RELATÓRIOS    
+    $scope.gerarRelatorios = function(cliente){
         $scope.buscando = true;
         console.log("latório");
         $scope.tabelas1 = [];
@@ -278,20 +277,13 @@ app.controller("botctrl", function($scope, $http){
             console.log("FOI!!!, MAIS PEDIDOS")
             $scope.nome = "Item";
             $scope.propriedade = "Quantidade";
-            $http.get("http://localhost:8080/clientes")
+            
+            $http.get("https://projeto-lab-chopp.herokuapp.com/maispedidos")
                 .then(function(cliente){
                     console.log('Vaaaai!');
                     $scope.buscando=false;
                     $scope.clientes = cliente.data;  
                     console.log(cliente);
-                    
-                    for(i = 0; i < cliente.data.length; i++){
-                       $scope.tabelas1.push(cliente.data[i].first_name);
-                       $scope.tabelas2.push(cliente.data[i].consumoMedio);
-                    }
-                    console.log(cliente.data);
-                    console.log($scope.tabelas1);
-                    console.log($scope.tabelas2); 
                     
                 },function(erro){
                     $scope.buscando=false;

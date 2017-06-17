@@ -4,7 +4,6 @@ import app.bot.cliente.Cliente;
 import app.bot.cliente.ClienteRepository;
 import app.bot.comanda.Comanda;
 import app.bot.comanda.ComandaRepository;
-import app.bot.comanda.ItemComandaRepository;
 import app.bot.dao.ComandaDAO;
 import org.springframework.context.ApplicationContext;
 
@@ -93,7 +92,7 @@ public class EstadoPagamento extends Estado {
         comanda.setTotal(0);
         comandaRepository.save(comanda);
         
-        comandaDAO.deletaItem(cliente);
+        comandaDAO.deletaItem();
           
     }
     

@@ -52,8 +52,8 @@ public class ComandaDAO {
     
         return result;
     }
-    public void deletaItem(Cliente cliente){
+    public void deletaItem(){
         itemRepository = context.getBean(ItemComandaRepository.class);
-        itemRepository.deleteByCliente(cliente);
+        itemRepository.deleteAll();
     }
 }
