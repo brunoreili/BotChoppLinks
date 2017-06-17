@@ -69,6 +69,7 @@ public class EstadoConfirma extends Estado{
             
             public void salvaItem(){
                 ItemComanda item = new ItemComanda();
+                item.setCliente(cliente);
                 item.setNome(produto);
                 item.setQuantidade(quantidade);
                 item.setValor(valor);

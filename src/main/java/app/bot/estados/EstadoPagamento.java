@@ -6,7 +6,6 @@ import app.bot.comanda.Comanda;
 import app.bot.comanda.ComandaRepository;
 import app.bot.comanda.ItemComandaRepository;
 import app.bot.dao.ComandaDAO;
-import java.util.List;
 import org.springframework.context.ApplicationContext;
 
 public class EstadoPagamento extends Estado {
@@ -14,7 +13,6 @@ public class EstadoPagamento extends Estado {
     private final ComandaDAO comandaDAO = new ComandaDAO(context);
     private final ClienteRepository clienteRepository;
     private final ComandaRepository comandaRepository;
-    private final ItemComandaRepository itemComandaRepository;
     final private Cliente cliente;
     final private Comanda comanda;    
     
@@ -24,7 +22,6 @@ public class EstadoPagamento extends Estado {
         this.comanda = comanda;
         this.clienteRepository = context.getBean(ClienteRepository.class);
         this.comandaRepository = context.getBean(ComandaRepository.class);
-        this.itemComandaRepository = context.getBean(ItemComandaRepository.class);
     }
 
     @Override
@@ -41,13 +38,9 @@ public class EstadoPagamento extends Estado {
                     proximoEstado = new EstadoApresentacao(context, cliente, comanda);
                     break;
                 case "2":
-                    deletaComanda();
-                    
-                    List<String> itens = comandaDAO.recuperaItensComanda();
-                    mensagemResposta = "ITENS " + itens.size();
-                    
+                    deletaComanda();                    
                     salvaAvaliacao(2);
-                    mensagemResposta += "Muito obrigado, " + cliente.getFirst_name() + ".\n" +
+                    mensagemResposta = "Muito obrigado, " + cliente.getFirst_name() + ".\n" +
                                        "O Laboratório do Chopp agradece a sua vinda!\n" +
                                        "Esperamos que volte mais vezes!";                                   
                     proximoEstado = new EstadoApresentacao(context, cliente, comanda);      

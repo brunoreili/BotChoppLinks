@@ -31,12 +31,13 @@ public class EstadoInicial extends Estado{
                                        "3 - Para PORÇÕES";
                     proximoEstado = new EstadoEscolhendo(context, cliente, comanda);
                     break;
-                case "2":                  
-                    List<String> itens = comandaDAO.recuperaItensComanda();
-                    List<Integer> quantidade = comandaDAO.recuperaQuantidadeItem();
-                    List<Double> valor = comandaDAO.recuperaValorItem();
+                case "2":
+                    List<String> itens = comandaDAO.recuperaItensComanda(cliente);
+                    List<Integer> quantidade = comandaDAO.recuperaQuantidadeItem(cliente);
+                    List<Double> valor = comandaDAO.recuperaValorItem(cliente);
                     mensagemResposta =  cliente.getFirst_name() + ", sua comanda até o momento está assim:" + System.lineSeparator() + System.lineSeparator() +
-                                        "QUANTIDADE - PRODUTO - VALOR" + System.lineSeparator();      
+                                        "QUANTIDADE - PRODUTO - VALOR" + System.lineSeparator(); 
+                    
                     for(int i=0; i < itens.size() ; i++){
                     mensagemResposta += System.lineSeparator() + 
                                         quantidade.get(i) + " - " + 

@@ -1,5 +1,6 @@
 package app.bot.dao;
 
+import app.bot.cliente.Cliente;
 import app.bot.comanda.ItemComanda;
 import app.bot.comanda.ItemComandaRepository;
 import java.util.ArrayList;
@@ -15,22 +16,22 @@ public class ComandaDAO {
         this.context = context;
     }
     
-    public List<String> recuperaItensComanda(){
+    public List<String> recuperaItensComanda(Cliente cliente){
         
         itemRepository = context.getBean(ItemComandaRepository.class);        
-        Iterable<ItemComanda> itemComanda = itemRepository.findAll();    
+        Iterable<ItemComanda> itemComanda = itemRepository.findByCliente(cliente);
         List<String> result = new ArrayList<>();
         
-        for(ItemComanda item : itemComanda){
+        for(ItemComanda item : itemComanda){            
             result.add(item.getNome());
         }
     
         return result;
-    }    
-    public List<Integer> recuperaQuantidadeItem(){
+    }  
+    public List<Integer> recuperaQuantidadeItem(Cliente cliente){
         
         itemRepository = context.getBean(ItemComandaRepository.class);        
-        Iterable<ItemComanda> itemComanda = itemRepository.findAll();    
+        Iterable<ItemComanda> itemComanda = itemRepository.findByCliente(cliente);    
         List<Integer> result = new ArrayList<>();
         
         for(ItemComanda item : itemComanda){
@@ -39,10 +40,10 @@ public class ComandaDAO {
     
         return result;
     }    
-    public List<Double> recuperaValorItem(){
+    public List<Double> recuperaValorItem(Cliente cliente){
         
         itemRepository = context.getBean(ItemComandaRepository.class);        
-        Iterable<ItemComanda> itemComanda = itemRepository.findAll();    
+        Iterable<ItemComanda> itemComanda = itemRepository.findByCliente(cliente);    
         List<Double> result = new ArrayList<>();
         
         for(ItemComanda item : itemComanda){
