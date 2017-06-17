@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Módulo de Testes</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <style>
+        .jumbotron{
+            width: 700px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+        }
+        .table{
+            margin-top: 20px;
+        }
+        .form-control{
+            width: 400px;
+            margin-left: 150px;
+        }
+        </style> 
+    </head>
+    <body ng-app="botapp" ng-controller="botctrl">
+        <script src="app.js"></script>
+
+        <h1 style="text-align: center">Laboratório do Chopp</h1>
+           
+        <ul class="nav nav-tabs">
+        <li role="presentation"><a href="index.html">Home</a></li>
+        <li role="presentation"><a href="cardapio.html">Cadastrar Cardápio</a></li>
+        <li role="presentation"><a href="relatorios.html">Relatórios</a></li>
+        <li role="presentation" class="active"><a href="testes.html">Testes</a></li>
+        </ul>
+        
+        
+        <hr/><!--Link do telegram-->
+        <div class="vc_single_image-wrapper vc_box_border_grey" style="text-align: center">
+            <a href="http://telegram.me/testechoppbot" target="_self">
+            <img width="332" height="59"
+                 src="http://www.estherbot.com/wp-content/uploads/2015/03/Sign-up-button-Copy-2@1x.png"
+                 class="vc_single_image-img attachment-full" alt="Sign up button Copy 2@1x"
+                 srcset="http://www.estherbot.com/wp-content/uploads/2015/03/Sign-up-button-Copy-2@1x.png 332w,
+                         http://www.estherbot.com/wp-content/uploads/2015/03/Sign-up-button-Copy-2@1x-300x53.png 300w,
+                         http://www.estherbot.com/wp-content/uploads/2015/03/Sign-up-button-Copy-2@1x@2x.png 664w"
+                 sizes="(max-width: 332px) 100vw, 332px"
+            />
+            </a>
+        </div>
+        
+        <hr><!--Enviar Texto-->
+        <div class="jumbotron">
+            <h3>Inserir Texto</h3>
+            <hr/>
+            <textarea class="form-control" rows="5" ng-model="texto" placeholder="Texto"></textarea> <br/>
+            <button class="btn btn-primary" 
+                    ng-click="enviar(texto)"
+                    ng-disabled="!texto">Enviar</button>
+            <br/>
+            <h4 ng-show="enviando">Enviando...</h4> 
+            <hr><!--Resposta-->
+            <h4 style="text-align: left">Resposta:</h4>
+            {{resposta.data.texto}}
+        </div> 
+        
+    </body>
+</html>
